@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>LRD Schematic Figure Quiz</title>
+<style>
+:root{--bg:#08111d;--panel:#0e1b2c;--line:#243a57;--text:#eef5ff;--muted:#9fb2ca;--accent:#ff6b63;--accent2:#f3b34d;--good:#48c78e;--bad:#ff6f82;--shadow:0 18px 55px rgba(0,0,0,.32)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--text);background:radial-gradient(900px 540px at 15% -10%,rgba(255,107,99,.14),transparent 65%),radial-gradient(800px 480px at 100% 0%,rgba(78,132,255,.14),transparent 65%),var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+button,a{font:inherit}.wrap{width:min(1180px,calc(100% - 28px));margin:0 auto;padding:30px 0 64px}.hero{margin-bottom:22px}.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);font-weight:800}h1{font-size:clamp(30px,5vw,58px);line-height:1.02;margin:6px 0 9px;letter-spacing:-.04em}.lede{margin:0;color:var(--muted);max-width:780px}.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.badge{border:1px solid var(--line);background:rgba(255,255,255,.035);padding:6px 10px;border-radius:999px;color:#cbd9ea;font-size:12px}
+.toolbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;background:rgba(14,27,44,.86);border:1px solid var(--line);padding:10px;border-radius:18px;margin-bottom:14px;position:sticky;top:8px;z-index:20;backdrop-filter:blur(14px)}.stat{padding:8px 10px;min-width:0}.stat b{display:block;font-size:21px;line-height:1.1}.stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.controls{display:flex;gap:8px;justify-content:flex-end;align-items:center}.btn{border:1px solid var(--line);background:#13253d;color:var(--text);border-radius:12px;padding:10px 13px;cursor:pointer;transition:.15s ease}.btn:hover{transform:translateY(-1px);border-color:#395a84}.btn.primary{background:linear-gradient(135deg,#ff6b63,#ef5f78);border-color:transparent;color:#fff;font-weight:800}.btn.ghost{background:transparent}
+.quiz{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,34,55,.96),rgba(11,23,38,.96));border-radius:24px;box-shadow:var(--shadow);overflow:hidden}.qtop{padding:16px 18px 0;display:flex;align-items:center;justify-content:space-between;gap:10px}.qnum{font-weight:800;color:#dbe8f7}.mode{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}.switch{width:44px;height:24px;border-radius:99px;background:#223955;position:relative;cursor:pointer;border:1px solid #355272}.switch::after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;top:2px;left:3px;transition:.2s}.switch.on{background:#9c4d49}.switch.on::after{left:21px}
+.figureWrap{padding:16px}.figureBox{position:relative;background:#f8f9fb;border-radius:18px;min-height:340px;height:min(58vh,630px);display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid #d6dce4}.figureBox img{width:100%;height:100%;object-fit:contain;display:block}.loading{position:absolute;color:#6a7686;text-align:center;padding:22px;max-width:560px}.loading strong{display:block;color:#344255;margin-bottom:5px}.imgFail{display:none;position:absolute;inset:0;align-items:center;justify-content:center;color:#516173;text-align:center;padding:28px;background:#f8f9fb}.imgFail strong{display:block;color:#24364a;font-size:18px;margin-bottom:7px}
+.question{padding:2px 18px 4px;font-size:17px;font-weight:800}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 18px 18px}.choice{min-height:94px;text-align:left;border:1px solid var(--line);background:#11223a;color:var(--text);border-radius:14px;padding:12px 13px;cursor:pointer;transition:.16s ease;position:relative}.choice:hover:not(:disabled){transform:translateY(-2px);border-color:#476c99;background:#142942}.choice .cite{display:block;font-weight:850;margin-bottom:4px}.choice .title{display:block;font-size:12.5px;color:#b8c9dd;line-height:1.35}.choice .key{position:absolute;right:9px;top:8px;color:#7289a5;font-size:11px}.choice.correct{border-color:var(--good);background:rgba(72,199,142,.12)}.choice.wrong{border-color:var(--bad);background:rgba(255,111,130,.12)}.choice:disabled{cursor:default}.actions{display:flex;gap:8px;justify-content:flex-end;padding:0 18px 18px}.reveal{margin:0 18px 18px;padding:16px;border:1px solid var(--line);border-radius:15px;background:#0b1727;display:none}.reveal.show{display:block}.verdict{font-weight:900;font-size:19px;margin-bottom:8px}.verdict.good{color:var(--good)}.verdict.bad{color:var(--bad)}.paperTitle{font-size:17px;font-weight:850;margin:2px 0 4px}.meta{color:var(--muted);font-size:13px;margin-bottom:10px}.desc{color:#dce7f4;margin:0 0 12px}.source{color:#ffd4cf;text-decoration:none;font-weight:750}.source:hover{text-decoration:underline}.progress{height:4px;background:#122035}.progress>div{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0;transition:.25s}.end{padding:34px 22px;text-align:center;display:none}.end.show{display:block}.end h2{font-size:34px;margin:4px 0 8px}.endScore{font-size:58px;font-weight:950;letter-spacing:-.05em}.fatal{padding:28px;color:#ffd9d5}.fatal code{background:#1b2b41;padding:2px 5px;border-radius:5px}
+@media(max-width:760px){.wrap{width:min(100% - 16px,1180px);padding-top:18px}.toolbar{grid-template-columns:repeat(3,1fr)}.controls{grid-column:1/-1;justify-content:stretch}.controls .btn{flex:1}.figureBox{height:min(51vh,500px);min-height:285px}.choices{grid-template-columns:1fr}.choice{min-height:78px}.stat b{font-size:18px}.qtop{align-items:flex-start}.mode{font-size:12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Little Red Dots · Schematic Figure Quiz</div>
+    <h1>Which LRD paper is this figure from?</h1>
+    <p class="lede">Identify the paper from its schematic figure. The source is revealed only after you answer.</p>
+    <div class="badges"><span class="badge" id="figBadge">loading…</span><span class="badge" id="paperBadge">loading…</span></div>
+  </div>
+
+  <div class="toolbar">
+    <div class="stat"><b id="score">0</b><span>score</span></div>
+    <div class="stat"><b id="streak">0</b><span>streak</span></div>
+    <div class="stat"><b id="position">–</b><span>progress</span></div>
+    <div class="controls"><button class="btn ghost" id="resetBtn">Shuffle & restart</button></div>
+  </div>
+
+  <section class="quiz" id="quiz">
+    <div class="progress"><div id="bar"></div></div>
+    <div id="playArea">
+      <div class="qtop">
+        <div class="qnum" id="qnum">Loading…</div>
+        <div class="mode"><span>Expert mode: hide titles</span><div class="switch" id="expertSwitch" role="switch" aria-checked="false" tabindex="0"></div></div>
+      </div>
+
+      <div class="figureWrap">
+        <div class="figureBox" id="figureBox">
+          <div class="loading" id="loading"><strong>Loading data…</strong></div>
+          <img id="figure" alt="LRD schematic figure quiz" referrerpolicy="no-referrer">
+          <div class="imgFail" id="imgFail"><div><strong>Figure unavailable</strong><span id="imgFailText">Check the image path or URL.</span></div></div>
+        </div>
+      </div>
+
+      <div class="question">Which paper is this schematic figure from?</div>
+      <div class="choices" id="choices"></div>
+      <div class="actions"><button class="btn" id="giveUpBtn">Show answer</button><button class="btn primary" id="nextBtn" style="display:none">Next figure →</button></div>
+
+      <div class="reveal" id="reveal">
+        <div class="verdict" id="verdict"></div>
+        <div class="paperTitle" id="paperTitle"></div>
+        <div class="meta" id="meta"></div>
+        <p class="desc" id="desc"></p>
+        <a class="source" id="source" target="_blank" rel="noopener noreferrer">View paper ↗</a>
+      </div>
+    </div>
+
+    <div class="end" id="end">
+      <div class="eyebrow">Deck complete</div>
+      <h2>Quiz complete.</h2>
+      <div class="endScore" id="endScore"></div>
+      <p class="lede" style="margin:0 auto 18px">Multiple schematic figures from the same paper are scored as separate questions.</p>
+      <button class="btn primary" id="againBtn">Play again</button>
+    </div>
+    <div class="fatal" id="fatal" style="display:none"></div>
+  </section>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+let CARDS = [], PAPERS = [], deck = [], idx = 0, score = 0, streak = 0, answered = false, expert = false, currentOptions = [];
+
+function parseCSV(text){
+  const rows=[]; let row=[], field='', q=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i], n=text[i+1];
+    if(q){
+      if(c==='"' && n==='"'){field+='"';i++;}
+      else if(c==='"'){q=false;}
+      else field+=c;
+    }else{
+      if(c==='"') q=true;
+      else if(c===','){row.push(field);field='';}
+      else if(c==='\n'){row.push(field.replace(/\r$/,''));rows.push(row);row=[];field='';}
+      else field+=c;
+    }
+  }
+  if(field.length||row.length){row.push(field.replace(/\r$/,''));rows.push(row);}
+  if(!rows.length) return [];
+  const h=rows.shift().map(x=>x.replace(/^\uFEFF/,''));
+  return rows.filter(r=>r.some(x=>x.trim()!=='')).map(r=>Object.fromEntries(h.map((k,i)=>[k,(r[i]??'').trim()])));
+}
+
+async function loadCSV(path){
+  const r=await fetch(path,{cache:'no-store'});
+  if(!r.ok) throw new Error(`${path}: HTTP ${r.status}`);
+  return parseCSV(await r.text());
+}
+
+function shuffle(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
+
+function optionSet(q){
+  const pool=shuffle(PAPERS.filter(p=>p.paper_id!==q.paper_id)).slice(0,3);
+  return shuffle([q.paper,...pool]);
+}
+
+function setExpert(v){
+  expert=v;
+  $('expertSwitch').classList.toggle('on',expert);
+  $('expertSwitch').setAttribute('aria-checked',String(expert));
+  if(!answered && idx<deck.length) renderChoices();
+}
+
+function renderChoices(){
+  const box=$('choices'); box.innerHTML='';
+  currentOptions.forEach((o,i)=>{
+    const b=document.createElement('button');
+    b.className='choice'; b.dataset.paper=o.paper_id;
+    b.innerHTML=`<span class="key">${i+1}</span><span class="cite">${esc(o.authors)} (${esc(o.year)})</span><span class="title" style="${expert?'display:none':''}">${esc(o.title)}</span>`;
+    b.onclick=()=>choose(o.paper_id,b);
+    box.appendChild(b);
+  });
+}
+
+function figureSources(q){
+  return [q.image_path,q.remote_image_url].filter(Boolean);
+}
+
+function loadFigure(q){
+  const sources=figureSources(q);
+  const img=$('figure'); let n=0;
+  $('imgFail').style.display='none'; $('loading').style.display='block'; $('loading').innerHTML='<strong>Loading figure…</strong>';
+  img.style.display='none';
+
+  const tryNext=()=>{
+    if(n>=sources.length){
+      $('loading').style.display='none'; img.style.display='none'; $('imgFail').style.display='flex';
+      $('imgFailText').textContent=' No working local image or remote image URL was found.';
+      return;
+    }
+    img.src=sources[n++];
+  };
+  img.onload=()=>{$('loading').style.display='none';$('imgFail').style.display='none';img.style.display='block';};
+  img.onerror=tryNext;
+  tryNext();
+}
+
+function loadQuestion(){
+  if(idx>=deck.length){finish();return;}
+  answered=false;
+  const q=deck[idx];
+  currentOptions=optionSet(q);
+  $('qnum').textContent=`Question ${idx+1}`;
+  $('position').textContent=`${idx+1} / ${deck.length}`;
+  $('bar').style.width=`${(idx/deck.length)*100}%`;
+  $('reveal').classList.remove('show');
+  $('nextBtn').style.display='none'; $('giveUpBtn').style.display='';
+  loadFigure(q); renderChoices();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function choose(paperId,button){
+  if(answered)return;
+  answered=true;
+  const q=deck[idx], correct=paperId===q.paper_id;
+  [...document.querySelectorAll('.choice')].forEach(b=>{b.disabled=true;if(b.dataset.paper===q.paper_id)b.classList.add('correct');});
+  if(correct){score++;streak++;}else{streak=0;button.classList.add('wrong');}
+  $('score').textContent=score; $('streak').textContent=streak;
+  showReveal(correct?'correct':'wrong');
+}
+
+function revealOnly(){
+  if(answered)return;
+  answered=true; streak=0; $('streak').textContent=0;
+  const q=deck[idx];
+  [...document.querySelectorAll('.choice')].forEach(b=>{b.disabled=true;if(b.dataset.paper===q.paper_id)b.classList.add('correct');});
+  showReveal('skip');
+}
+
+function showReveal(kind){
+  const q=deck[idx],v=$('verdict');
+  if(kind==='correct'){v.textContent='Correct';v.className='verdict good';}
+  else if(kind==='wrong'){v.textContent='Not quite — here is the answer';v.className='verdict bad';}
+  else{v.textContent='Answer';v.className='verdict';}
+  $('paperTitle').textContent=q.paper.title;
+  $('meta').textContent=`${q.paper.authors} (${q.paper.year}) · ${q.figure_label}${q.paper.arxiv?' · arXiv:'+q.paper.arxiv:''}`;
+  $('desc').textContent=q.description||'';
+  $('source').href=q.paper.source_url||'#';
+  $('reveal').classList.add('show');
+  $('giveUpBtn').style.display='none'; $('nextBtn').style.display='';
+}
+
+function next(){if(!answered)return;idx++;loadQuestion();}
+
+function finish(){
+  $('playArea').style.display='none'; $('end').classList.add('show'); $('bar').style.width='100%';
+  $('position').textContent=`${deck.length} / ${deck.length}`; $('endScore').textContent=`${score} / ${deck.length}`;
+}
+
+function reset(){
+  deck=shuffle(CARDS); idx=0; score=0; streak=0; answered=false;
+  $('score').textContent=0; $('streak').textContent=0; $('end').classList.remove('show'); $('playArea').style.display=''; loadQuestion();
+}
+
+async function init(){
+  try{
+    const [papers,figs]=await Promise.all([loadCSV('data/papers.csv'),loadCSV('data/figures.csv')]);
+    const pm=new Map(papers.map(p=>[p.paper_id,p]));
+    PAPERS=papers;
+    CARDS=figs.filter(f=>!['0','false','no'].includes((f.enabled||'1').toLowerCase())).map(f=>({...f,paper:pm.get(f.paper_id)})).filter(f=>f.paper&&figureSources(f).length);
+    if(CARDS.length<1) throw new Error('No enabled figures were found in data/figures.csv.');
+    if(PAPERS.length<4) throw new Error('At least four papers are required for multiple-choice mode.');
+    $('figBadge').textContent=`${CARDS.length} schematic figures`;
+    $('paperBadge').textContent=`${PAPERS.length} papers`;
+    reset();
+  }catch(e){
+    $('playArea').style.display='none'; $('fatal').style.display='block';
+    $('fatal').innerHTML=`<b>Could not load the quiz data.</b><br>${esc(e.message)}<br><br>This page loads CSV files with <code>fetch()</code>, so open it through GitHub Pages or a local HTTP server rather than by double-clicking index.html.`;
+    console.error(e);
+  }
+}
+
+$('giveUpBtn').onclick=revealOnly;
+$('nextBtn').onclick=next;
+$('resetBtn').onclick=reset;
+$('againBtn').onclick=reset;
+$('expertSwitch').onclick=()=>setExpert(!expert);
+$('expertSwitch').onkeydown=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();setExpert(!expert);}};
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;
+  if(e.key>='1'&&e.key<='4'&&!answered){const b=[...document.querySelectorAll('.choice')][Number(e.key)-1];if(b)b.click();}
+  if((e.key==='n'||e.key==='N')&&answered)next();
+  if(e.key==='e'||e.key==='E')setExpert(!expert);
+});
+init();
+</script>
+</body>
+</html>
