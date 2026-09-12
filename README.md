@@ -27,7 +27,7 @@ The public web page intentionally shows only the quiz. Maintenance notes, the au
 Example:
 
 ```text
-assets/figures/naidu_2026_fig3.png
+assets/figures/naidu2026_mom_bhstar_fig3.png
 ```
 
 Use ASCII-only filenames when possible.
@@ -38,7 +38,7 @@ Skip this step if the paper is already present.
 
 ```csv
 paper_id,authors,year,title,arxiv,source_url,notes
-naidu26,Naidu et al.,2026,Paper title here,2600.00000,https://arxiv.org/abs/2600.00000,
+naidu26-mom,Naidu et al.,2026,A gas-enshrouded and gas-reddened black hole at cosmic dawn,,https://www.nature.com/articles/s41586-026-10846-4,
 ```
 
 Recommended convention: use the arXiv identifier as `paper_id` when one exists.
@@ -47,7 +47,7 @@ Recommended convention: use the arXiv identifier as `paper_id` when one exists.
 
 ```csv
 figure_id,paper_id,figure_label,image_path,remote_image_url,description,enabled
-naidu26-fig3,naidu26,Figure 3,assets/figures/naidu_2026_fig3.png,,Gas-enshrouded black-hole schematic,1
+naidu26-fig3,naidu26,Figure 3,assets/figures/naidu2026_mom_bhstar_fig3.png,,Gas-enshrouded black-hole schematic,1
 ```
 
 Columns:
@@ -118,7 +118,7 @@ http://localhost:8000/
 
 ## Existing data
 
-The initial schematic-figure collection has already been moved into `papers.csv` and `figures.csv`. Many entries currently use a `remote_image_url`. As you add your own image files, populate `image_path`; the quiz will try the local file first and fall back to the remote URL if needed.
+The current deck contains 33 schematic figures from 30 papers, including locally stored figures from Inayoshi+, Chen+, de Graaff+, and Naidu+ supplied for this project. The collection is managed entirely through `papers.csv` and `figures.csv`. Many entries currently use a `remote_image_url`. As you add your own image files, populate `image_path`; the quiz will try the local file first and fall back to the remote URL if needed.
 
 `data/audit.csv` contains candidate schematic figures that were identified but not yet added as active quiz questions. It is for maintenance only and is not shown on the public quiz page.
 
